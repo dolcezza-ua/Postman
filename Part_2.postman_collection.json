@@ -1,0 +1,253 @@
+{
+	"info": {
+		"_postman_id": "27028526-7926-47df-a88e-75cd72ab8e3a",
+		"name": "HW_2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23594075"
+	},
+	"item": [
+		{
+			"name": "/first",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5007/first",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5007",
+					"path": [
+						"first"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user_info_3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [	
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "25",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "2500",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Jasmine",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_3"
+					],
+					"query": [
+						{
+							"key": "age",
+							"value": "25",
+							"disabled": true
+						},
+						{
+							"key": "salary",
+							"value": "2500",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "Jasmin",
+							"disabled": true
+						},
+						{
+							"key": "auth_token",
+							"value": "{{token}}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/object_info_3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5007/object_info_3?name=Ann&age=30&salary=3000",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5007",
+					"path": [
+						"object_info_3"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Ann"
+						},
+						{
+							"key": "age",
+							"value": "30"
+						},
+						{
+							"key": "salary",
+							"value": "3000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/object_info_4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/object_info_4?name=Kate&age=50&salary=1000",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"object_info_4"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Kate"
+						},
+						{
+							"key": "age",
+							"value": "50"
+						},
+						{
+							"key": "salary",
+							"value": "1000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user_info_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "{{name}}",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "{{age}}",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "{{salary}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
