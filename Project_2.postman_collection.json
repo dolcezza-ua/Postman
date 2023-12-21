@@ -1,0 +1,901 @@
+{
+	"info": {
+		"_postman_id": "5ae625ad-647d-4d09-8f1d-84de470d873d",
+		"name": "Project_2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23594075"
+	},
+	"item": [
+		{
+			"name": "EP_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var data = pm.response.json();\r",
+							"var schema = \r",
+							"{\r",
+							"    \"type\": \"array\",\r",
+							"    \"items\":\r",
+							"    {\r",
+							"        \"type\": \"string\"\r",
+							"    },\r",
+							"    \"maxItems\": 2\r",
+							"};\r",
+							"\r",
+							"pm.test(\"Schema is valid\", function () {\r",
+							"    pm.response.to.have.jsonSchema(schema);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/get_method?name=Olha&age=18",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"get_method"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Olha"
+						},
+						{
+							"key": "age",
+							"value": "18"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Debug EP_1",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url1}}/get_method?name=Olha&age=18",
+							"host": [
+								"{{url1}}"
+							],
+							"path": [
+								"get_method"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Olha"
+								},
+								{
+									"key": "age",
+									"value": "18"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "22"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.10"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Dec 2023 20:19:16 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    \"Olha\",\n    \"18\"\n]"
+				}
+			]
+		},
+		{
+			"name": "EP_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var data = pm.response.json();\r",
+							"var schema = \r",
+							"{\r",
+							"    \"type\": \"object\",\r",
+							"    \"properties\":\r",
+							"    {\r",
+							"        \"age\":\r",
+							"        {\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"family\":\r",
+							"        {\r",
+							"            \"type\": \"object\",\r",
+							"            \"properties\":\r",
+							"            {\r",
+							"               \"children\": \r",
+							"               {\r",
+							"                    \"type\": \"array\",\r",
+							"                    \"items\":\r",
+							"                    {\r",
+							"                        \"type\": \"array\",\r",
+							"                        \"items\":\r",
+							"                        [\r",
+							"                            {\r",
+							"                                \"type\": \"string\"\r",
+							"                            },\r",
+							"                            {\r",
+							"                                \"type\": \"integer\"\r",
+							"                            }\r",
+							"                        ],\r",
+							"                        \"maxItems\": 2\r",
+							"                    },\r",
+							"                    \"maxItems\": 2\r",
+							"               },\r",
+							"                \"u_salary_1_5_year\":\r",
+							"                {\r",
+							"                    \"type\": \"integer\"\r",
+							"                }\r",
+							"            },\r",
+							"            \"additionalProperties\": false,\r",
+							"            \"required\": [\"children\", \"u_salary_1_5_year\"]\r",
+							"        },\r",
+							"        \"name\":\r",
+							"        {\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"salary\":\r",
+							"        {\r",
+							"            \"type\": \"integer\"\r",
+							"        }\r",
+							"    },\r",
+							"    \"additionalProperties\": false,\r",
+							"    \"required\": [\"age\", \"family\", \"name\", \"salary\"]\r",
+							"};\r",
+							"\r",
+							"pm.test(\"Schema is valid\", function () {\r",
+							"    pm.response.to.have.jsonSchema(schema);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Tanya",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "30",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "1000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_3"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Debug EP_2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Tanya",
+									"type": "text"
+								},
+								{
+									"key": "age",
+									"value": "30",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "1000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://162.55.220.72:5005/user_info_3",
+							"protocol": "http",
+							"host": [
+								"162",
+								"55",
+								"220",
+								"72"
+							],
+							"port": "5005",
+							"path": [
+								"user_info_3"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "223"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.10"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Dec 2023 20:27:26 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"age\": \"30\",\n    \"family\": {\n        \"children\": [\n            [\n                \"Alex\",\n                24\n            ],\n            [\n                \"Kate\",\n                12\n            ]\n        ],\n        \"u_salary_1_5_year\": 4000\n    },\n    \"name\": \"Tanya\",\n    \"salary\": 1000\n}"
+				}
+			]
+		},
+		{
+			"name": "EP_3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5005/object_info_1?name=Olha&age=18&weight=55",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"object_info_1"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Olha"
+						},
+						{
+							"key": "age",
+							"value": "18"
+						},
+						{
+							"key": "weight",
+							"value": "55"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EP_4",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5005/object_info_2?name=Olha&age=18&salary=2000",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"object_info_2"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Olha"
+						},
+						{
+							"key": "age",
+							"value": "18"
+						},
+						{
+							"key": "salary",
+							"value": "2000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EP_5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var data = pm.response.json();\r",
+							"var schema = \r",
+							"{\r",
+							"    \"type\": \"object\",\r",
+							"    \"properties\":\r",
+							"    {\r",
+							"        \"age\":\r",
+							"        {\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"family\":\r",
+							"        {\r",
+							"            \"type\": \"object\",\r",
+							"            \"properties\":\r",
+							"            {\r",
+							"               \"children\": \r",
+							"               {\r",
+							"                    \"type\": \"array\",\r",
+							"                    \"items\":\r",
+							"                    {\r",
+							"                        \"type\": \"array\",\r",
+							"                        \"items\":\r",
+							"                        { \"anyOf\":\r",
+							"                          [\r",
+							"                            {\r",
+							"                                \"type\": \"string\"\r",
+							"                            },\r",
+							"                            {\r",
+							"                                \"type\": \"integer\"\r",
+							"                            }\r",
+							"                          ]\r",
+							"                        },\r",
+							"                        \"maxItems\": 2\r",
+							"                    },\r",
+							"                    \"maxItems\": 2\r",
+							"               },\r",
+							"               \"pets\":\r",
+							"               {\r",
+							"                \"type\": \"object\",\r",
+							"                \"properties\":\r",
+							"                {\r",
+							"                    \"cat\":\r",
+							"                    {\r",
+							"                        \"type\": \"object\",\r",
+							"                        \"properties\":\r",
+							"                        {\r",
+							"                            \"age\":\r",
+							"                            {\r",
+							"                                \"type\": \"integer\"\r",
+							"                            },\r",
+							"                            \"name\":\r",
+							"                            {\r",
+							"                                \"type\": \"string\"\r",
+							"                            }\r",
+							"                        },\r",
+							"                        \"additionalProperties\": false,\r",
+							"                        \"required\": [\"age\", \"name\"]\r",
+							"                    },\r",
+							"                    \"dog\":\r",
+							"                    {\r",
+							"                        \"type\": \"object\",\r",
+							"                        \"properties\":\r",
+							"                        {\r",
+							"                            \"age\":\r",
+							"                            {\r",
+							"                                \"type\": \"integer\"\r",
+							"                            },\r",
+							"                            \"name\":\r",
+							"                            {\r",
+							"                                \"type\": \"string\"\r",
+							"                            }\r",
+							"                        },\r",
+							"                        \"additionalProperties\": false,\r",
+							"                        \"required\": [\"age\", \"name\"]\r",
+							"                    }\r",
+							"                },\r",
+							"                 \"additionalProperties\": false,\r",
+							"                \"required\": [\"cat\", \"dog\"]\r",
+							"               },\r",
+							"                \"u_salary_1_5_year\":\r",
+							"                {\r",
+							"                    \"type\": \"integer\"\r",
+							"                }\r",
+							"            },\r",
+							"            \"additionalProperties\": false,\r",
+							"            \"required\": [\"children\", \"pets\", \"u_salary_1_5_year\"]\r",
+							"        },\r",
+							"        \"name\":\r",
+							"        {\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"salary\":\r",
+							"        {\r",
+							"            \"type\": \"integer\"\r",
+							"        }\r",
+							"    },\r",
+							"    \"additionalProperties\": false,\r",
+							"    \"required\": [\"age\", \"family\", \"name\", \"salary\"]\r",
+							"};\r",
+							"\r",
+							"pm.test(\"Schema is valid\", function () {\r",
+							"    pm.response.to.have.jsonSchema(schema);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/object_info_3?name=Anna&age=19&salary=3000",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"object_info_3"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Anna"
+						},
+						{
+							"key": "age",
+							"value": "19"
+						},
+						{
+							"key": "salary",
+							"value": "3000"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Debug EP_5",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://162.55.220.72:5005/object_info_3?name=Anna&age=19&salary=3000",
+							"protocol": "http",
+							"host": [
+								"162",
+								"55",
+								"220",
+								"72"
+							],
+							"port": "5005",
+							"path": [
+								"object_info_3"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Anna"
+								},
+								{
+									"key": "age",
+									"value": "19"
+								},
+								{
+									"key": "salary",
+									"value": "3000"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "378"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.10"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Dec 2023 15:56:16 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"age\": \"19\",\n    \"family\": {\n        \"children\": [\n            [\n                \"Alex\",\n                24\n            ],\n            [\n                \"Kate\",\n                12\n            ]\n        ],\n        \"pets\": {\n            \"cat\": {\n                \"age\": 3,\n                \"name\": \"Sunny\"\n            },\n            \"dog\": {\n                \"age\": 4,\n                \"name\": \"Luky\"\n            }\n        },\n        \"u_salary_1_5_year\": 12000\n    },\n    \"name\": \"Anna\",\n    \"salary\": 3000\n}\n"
+				}
+			]
+		},
+		{
+			"name": "EP_6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var data = pm.response.json();\r",
+							"var schema = \r",
+							"{\r",
+							"    \"type\": \"object\",\r",
+							"    \"properties\":\r",
+							"    {\r",
+							"        \"age\":\r",
+							"        {\r",
+							"            \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"name\":\r",
+							"        {\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"salary\":\r",
+							"        {\r",
+							"            \"type\": \"array\",\r",
+							"            \"items\":\r",
+							"            [\r",
+							"                {\r",
+							"                    \"type\": \"integer\"\r",
+							"                },\r",
+							"                {\r",
+							"                    \"type\": \"string\"\r",
+							"                },\r",
+							"                {\r",
+							"                    \"type\": \"string\"\r",
+							"                }\r",
+							"            ],\r",
+							"            \"maxItems\": 3\r",
+							"        }\r",
+							"    },\r",
+							"    \"additionalProperties\": false,\r",
+							"    \"required\": [\"age\", \"name\", \"salary\"]\r",
+							"};\r",
+							"\r",
+							"pm.test(\"Schema is valid\", function () {\r",
+							"    pm.response.to.have.jsonSchema(schema);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/object_info_4?name=Jasmin&age=20&salary=4000",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"object_info_4"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Jasmin"
+						},
+						{
+							"key": "age",
+							"value": "20"
+						},
+						{
+							"key": "salary",
+							"value": "4000"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Debug EP_6",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://162.55.220.72:5005/object_info_4?name=Jasmin&age=20&salary=4000",
+							"protocol": "http",
+							"host": [
+								"162",
+								"55",
+								"220",
+								"72"
+							],
+							"port": "5005",
+							"path": [
+								"object_info_4"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Jasmin"
+								},
+								{
+									"key": "age",
+									"value": "20"
+								},
+								{
+									"key": "salary",
+									"value": "4000"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "93"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.10"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Dec 2023 20:43:15 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"age\": 20,\n    \"name\": \"Jasmin\",\n    \"salary\": [\n        4000,\n        \"8000\",\n        \"12000\"\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "EP_7",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var data = pm.response.json();\r",
+							"var schema = \r",
+							"{\r",
+							"    \"type\": \"object\",\r",
+							"    \"properties\":\r",
+							"    {\r",
+							"        \"person\":\r",
+							"        {\r",
+							"           \"type\": \"object\",\r",
+							"            \"properties\": \r",
+							"            {\r",
+							"                \"u_age\":\r",
+							"                {\r",
+							"                    \"type\": \"integer\"\r",
+							"                },\r",
+							"                \"u_name\":\r",
+							"                {\r",
+							"                    \"type\": \"array\",\r",
+							"                    \"items\":\r",
+							"                    [\r",
+							"                        {\r",
+							"                            \"type\": \"string\"\r",
+							"                        },\r",
+							"                        {\r",
+							"                            \"type\": \"integer\"\r",
+							"                        },\r",
+							"                        {\r",
+							"                            \"type\": \"integer\"\r",
+							"                        }\r",
+							"                    ],\r",
+							"                    \"maxItems\": 3\r",
+							"                },\r",
+							"                \"u_salary_5_years\":\r",
+							"                {\r",
+							"                    \"type\": \"integer\"\r",
+							"                }\r",
+							"            },\r",
+							"            \"additionalProperties\": false,\r",
+							"            \"required\": [\"u_age\", \"u_name\", \"u_salary_5_years\"]\r",
+							"        },\r",
+							"        \"qa_salary_after_1.5_year\":\r",
+							"        {\r",
+							"            \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"qa_salary_after_12_months\":\r",
+							"        {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"qa_salary_after_3.5_years\":\r",
+							"        {\r",
+							"            \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"qa_salary_after_6_months\":\r",
+							"        {\r",
+							"            \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"start_qa_salary\":\r",
+							"        {\r",
+							"            \"type\": \"integer\"\r",
+							"        }\r",
+							"    },\r",
+							"    \"additionalProperties\": false,\r",
+							"    \"required\": [\"person\", \"qa_salary_after_1.5_year\", \"qa_salary_after_12_months\", \"qa_salary_after_3.5_years\", \"qa_salary_after_6_months\", \"start_qa_salary\"]\r",
+							"};\r",
+							"\r",
+							"pm.test(\"Schema is valid\", function () {\r",
+							"    pm.response.to.have.jsonSchema(schema);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Tina",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "22",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "1500",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Debug EP_7",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Tina",
+									"type": "text"
+								},
+								{
+									"key": "age",
+									"value": "22",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "1500",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://162.55.220.72:5005/user_info_2",
+							"protocol": "http",
+							"host": [
+								"162",
+								"55",
+								"220",
+								"72"
+							],
+							"port": "5005",
+							"path": [
+								"user_info_2"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "328"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.10"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Dec 2023 20:52:34 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"person\": {\n        \"u_age\": 22,\n        \"u_name\": [\n            \"Tina\",\n            1500,\n            22\n        ],\n        \"u_salary_5_years\": 6300\n    },\n    \"qa_salary_after_1.5_year\": 4950,\n    \"qa_salary_after_12_months\": 4050.0000000000005,\n    \"qa_salary_after_3.5_years\": 5700,\n    \"qa_salary_after_6_months\": 3000,\n    \"start_qa_salary\": 1500\n}"
+				}
+			]
+		}
+	]
+}
